@@ -12,19 +12,14 @@
     *{margin:0;padding:0;box-sizing:border-box}
 
     :root{
-      --purple:#7b2d8b;
-      --deep:#0b001c;
-      --mid:#1c0033;
+      --pink:#e0197a;
+      --pink-rgb:224,25,122;
+      --deep:#220042;
+      --mid:#3e0075;
       --gold:#f5c842;
       --gold-light:#fff3b0;
-      --pink:#e0197a;
       --lpurp:#ce93d8;
-      --magenta:#c2185b;
       --lavender:#e8d5ff;
-      --glass-bg:rgba(25,0,50,.45);
-      --glass-border:rgba(206,147,216,.12);
-      --spotlight-pink:rgba(220,22,118,.55);
-      --spotlight-violet:rgba(88,12,165,.32);
       --font-serif:'Cormorant Garamond','Playfair Display',serif;
       --font-sans:'Inter','Quicksand',sans-serif;
     }
@@ -34,13 +29,13 @@
       scroll-snap-type:y mandatory;
       overflow-y:scroll;
       overflow-x:hidden;
-      background:#1e0038;
+      background:var(--deep);
     }
 
     body{
       font-family:var(--font-sans);
       color:#fff;
-      background:#1e0038;
+      background:var(--deep);
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
@@ -130,13 +125,13 @@
     #music-btn.playing::after{
       content:'';position:absolute;inset:-4px;
       border-radius:50%;
-      border:2px solid var(--gold);
+      border:1px solid rgba(var(--pink-rgb),.6);
       animation:musicRing 1.5s ease-out infinite;
       pointer-events:none;
     }
     @keyframes musicPulse{
-      0%,100%{box-shadow:0 0 20px rgba(245,200,66,.2)}
-      50%{box-shadow:0 0 35px rgba(245,200,66,.5)}
+      0%,100%{box-shadow:0 4px 20px rgba(0,0,0,.4),0 0 16px rgba(var(--pink-rgb),.15)}
+      50%{box-shadow:0 4px 20px rgba(0,0,0,.4),0 0 28px rgba(var(--pink-rgb),.4)}
     }
     @keyframes musicRing{
       0%{transform:scale(1);opacity:.6}
@@ -306,7 +301,7 @@
       font-style:italic;letter-spacing:.1em;
       color:var(--gold);text-shadow:0 2px 20px rgba(0,0,0,.8);
       opacity:0;transition:opacity .4s;
-      background:radial-gradient(ellipse,rgba(26,0,51,.5),transparent 70%);
+      background:radial-gradient(ellipse,rgba(34,0,66,.55),transparent 70%);
     }
     .g-item:hover::after{opacity:1}
 
@@ -499,7 +494,7 @@
 
     .tini-card::after{
       content:'';position:absolute;inset:0;
-      background:radial-gradient(ellipse at center,rgba(45,0,80,.7) 0%,rgba(26,0,51,.85) 100%);
+      background:radial-gradient(ellipse at center,rgba(62,0,117,.72) 0%,rgba(34,0,66,.88) 100%);
       opacity:0;transition:opacity .4s;z-index:1;
     }
     .tini-card:hover::after{opacity:1}
@@ -560,20 +555,20 @@
       position:absolute;inset:0;
       display:flex;flex-direction:column;
       align-items:center;justify-content:center;gap:16px;
-      background:rgba(26,0,51,.5);transition:background .3s;
+      background:rgba(34,0,66,.55);transition:background .3s;
     }
-    .video-thumb:hover .video-overlay{background:rgba(26,0,51,.3)}
+    .video-thumb:hover .video-overlay{background:rgba(34,0,66,.3)}
     .play-circle{
       width:80px;height:80px;
-      background:rgba(233,30,140,.9);border-radius:50%;
+      background:rgba(var(--pink-rgb),.92);border-radius:50%;
       display:flex;align-items:center;justify-content:center;
       font-size:30px;padding-left:4px;
-      box-shadow:0 0 40px rgba(233,30,140,.7),0 0 80px rgba(233,30,140,.3);
+      box-shadow:0 0 40px rgba(var(--pink-rgb),.65),0 0 80px rgba(var(--pink-rgb),.25);
       transition:all .3s;
     }
     .video-thumb:hover .play-circle{
       transform:scale(1.1);
-      box-shadow:0 0 60px rgba(233,30,140,.9),0 0 120px rgba(233,30,140,.4);
+      box-shadow:0 0 60px rgba(var(--pink-rgb),.88),0 0 120px rgba(var(--pink-rgb),.35);
     }
     .video-label{
       color:rgba(255,255,255,.8);font-size:13px;
@@ -583,16 +578,17 @@
     .play-btn{
       margin-top:24px;
       display:inline-flex;align-items:center;gap:10px;
-      background:linear-gradient(135deg,var(--purple),var(--pink));
+      background:linear-gradient(135deg,#5a0a9a,var(--pink));
       color:#fff;border:none;
       padding:12px 32px;border-radius:50px;
       font-family:var(--font-sans);font-size:14px;font-weight:600;
       cursor:pointer;letter-spacing:.08em;transition:all .3s;
       opacity:0;transform:translateY(20px);
+      box-shadow:0 4px 20px rgba(var(--pink-rgb),.3);
     }
     .play-btn:hover{
       transform:translateY(-2px) !important;
-      box-shadow:0 8px 30px rgba(233,30,140,.5);
+      box-shadow:0 8px 30px rgba(var(--pink-rgb),.5);
     }
 
     /* ==================== CONCERT / ENVELOPE ==================== */
@@ -661,9 +657,9 @@
     .env-flap{
       position:absolute;
       top:0;left:0;right:0;height:52%;
-      background:linear-gradient(165deg,#4a1565 0%,#3a0e55 100%);
+      background:linear-gradient(165deg,#3e0870 0%,#2e0858 100%);
       border-radius:14px 14px 0 0;
-      border:2px solid rgba(245,200,66,.35);
+      border:1px solid rgba(var(--pink-rgb),.2);
       border-bottom:none;
       transform-origin:top center;
       transition:transform 1s cubic-bezier(.4,0,.2,1);
@@ -1377,9 +1373,9 @@ addEventListener('resize', resizeRoseCv);
 
 const ROSE_COLORS = [
   '#dc143c','#ff1450','#c83250','#ff6987','#b41e3c',
-  '#ffb6c1','#e63c64','#ff4d80','#f8a0b8','#e91e8c',
+  '#ffb6c1','#e63c64','#ff4d80','#f8a0b8','#e0197a',
 ];
-const HEART_COLORS = ['#e91e8c','#ce93d8','#f5c842','#ff6987','#fff'];
+const HEART_COLORS = ['#e0197a','#ce93d8','#f5c842','#ff6987','#fff'];
 
 // Petal particle (small, from burst)
 class RosePetal {
@@ -1562,7 +1558,7 @@ poemSecObs.observe(document.getElementById('sec-poem'));
 /* ==================== FIREWORKS ==================== */
 const cv = document.getElementById('fw-canvas');
 const ctx = cv.getContext('2d');
-const FWC = ['#f5c842','#e91e8c','#c084fc','#fff','#7b2d8b','#ff6b9d','#ffe066','#ce93d8'];
+const FWC = ['#f5c842','#e0197a','#c084fc','#fff','#9b30d8','#ff6b9d','#ffe066','#ce93d8'];
 
 function resizeCv() { cv.width = innerWidth; cv.height = innerHeight; }
 resizeCv();
@@ -1662,7 +1658,7 @@ let lastFW = 0;
 function fwLoop(ts) {
   if (!fwActive) return;
   requestAnimationFrame(fwLoop);
-  ctx.fillStyle = 'rgba(26,0,51,.18)';
+  ctx.fillStyle = 'rgba(34,0,66,.18)';
   ctx.fillRect(0, 0, cv.width, cv.height);
   if (ts - lastFW > 700) {
     fireworks.push(new Firework());
@@ -1691,7 +1687,7 @@ for (let i = 0; i < 100; i++) {
 }
 
 /* ==================== FLOATING PARTICLES ==================== */
-const particleColors = ['#f5c842','#e91e8c','#ce93d8','#7b2d8b','rgba(255,255,255,.3)'];
+const particleColors = ['#f5c842','#e0197a','#ce93d8','#9b30d8','rgba(255,255,255,.3)'];
 const particlesEl = document.getElementById('particles');
 particleColors.forEach(c => {
   for (let i = 0; i < 3; i++) {
