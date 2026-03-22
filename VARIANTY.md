@@ -13,3 +13,5 @@ Další deploy tmavé: ve složce `elena-narozeniny-v2-dark` spusť `npx vercel 
 ### iPhone / iPad (Safari)
 
 Obě varianty mají `viewport-fit=cover`, safe area pro výřezy, `100svh`/`100dvh`, Retina canvas (`devicePixelRatio`), `visualViewport` při skrývání lišty a větší tečky navigace na dotyku.
+
+**Scroll:** `scroll-snap-type: proximity` (ne mandatory), sekce s `overflow-y: visible` aby šlo dočíst dlouhý obsah, navigace jako `<button>`, `scrollIntoView` s `block: start` a `prefers-reduced-motion`.

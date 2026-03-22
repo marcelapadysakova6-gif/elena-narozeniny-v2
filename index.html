@@ -37,16 +37,19 @@
 
     html{
       scroll-behavior:smooth;
-      scroll-snap-type:y mandatory;
-      overflow-y:scroll;
+      /* proximity = na mobilu plynulý scroll; mandatory na iOS často zadrhává */
+      scroll-snap-type:y proximity;
       overflow-x:hidden;
+      overflow-y:auto;
       -webkit-overflow-scrolling:touch;
-      overscroll-behavior-y:contain;
+      overscroll-behavior-y:auto;
       scroll-padding-top:var(--safe-top);
       scroll-padding-bottom:var(--safe-bottom);
       background:var(--page-gradient);
       -webkit-text-size-adjust:100%;
       text-size-adjust:100%;
+      min-height:100%;
+      min-height:-webkit-fill-available;
     }
 
     body{
@@ -55,9 +58,11 @@
       background:var(--page-gradient);
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
-      touch-action:manipulation;
-      min-height:100vh;
-      min-height:100svh;
+      overflow-x:hidden;
+      /* pan-y = spolehlivý svislý scroll na iOS; pinch-zoom zůstane */
+      touch-action:pan-y pinch-zoom;
+      min-height:100%;
+      min-height:100dvh;
       min-height:-webkit-fill-available;
     }
 
@@ -165,14 +170,19 @@
       min-height:100svh;
       min-height:100dvh;
       scroll-snap-align:start;
+      scroll-snap-stop:normal;
+      scroll-margin-top:var(--safe-top);
+      scroll-margin-bottom:var(--safe-bottom);
       position:relative;
-      overflow:hidden;
+      overflow-x:hidden;
+      overflow-y:visible;
     }
 
     /* ==================== HERO ==================== */
     .hero{
       display:flex;align-items:center;justify-content:center;
       background:var(--page-gradient);
+      overflow:hidden;
     }
 
     #fw-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
@@ -592,6 +602,7 @@
       align-items:center;justify-content:center;
       padding:40px 16px;
       perspective:1200px;
+      overflow:hidden;
     }
 
     .envelope-wrapper{
@@ -800,11 +811,18 @@
       padding-bottom:var(--safe-bottom);
     }
     .nav-dot{
+      display:block;
       width:4px;height:4px;border-radius:2px;
       background:rgba(120,0,170,.25);
       border:none;
+      padding:0;margin:0;
       cursor:pointer;transition:all .4s cubic-bezier(.25,.46,.45,.94);position:relative;
       -webkit-tap-highlight-color:transparent;
+      -webkit-appearance:none;appearance:none;
+      font-size:0;line-height:0;color:transparent;
+    }
+    .nav-dot:focus-visible{
+      outline:2px solid var(--pink);outline-offset:3px;
     }
     .nav-dot::after{
       content:attr(data-label);
@@ -1098,15 +1116,15 @@
   <p class="finale-family reveal">— Tvoje rodina</p>
 </section>
 
-<!-- NAV DOTS -->
-<nav class="nav-dots" id="nav-dots">
-  <div class="nav-dot active" data-i="0" data-label="Intro"></div>
-  <div class="nav-dot" data-i="1" data-label="Galerie"></div>
-  <div class="nav-dot" data-i="2" data-label="Přání"></div>
-  <div class="nav-dot" data-i="3" data-label="TINI"></div>
-  <div class="nav-dot" data-i="4" data-label="Video"></div>
-  <div class="nav-dot" data-i="5" data-label="Koncert"></div>
-  <div class="nav-dot" data-i="6" data-label="Finále"></div>
+<!-- NAV DOTS (button = spolehlivý tap na iOS) -->
+<nav class="nav-dots" id="nav-dots" aria-label="Sekce stránky">
+  <button type="button" class="nav-dot active" data-i="0" data-label="Intro" aria-label="Intro" aria-current="true"></button>
+  <button type="button" class="nav-dot" data-i="1" data-label="Galerie" aria-label="Galerie"></button>
+  <button type="button" class="nav-dot" data-i="2" data-label="Přání" aria-label="Přání"></button>
+  <button type="button" class="nav-dot" data-i="3" data-label="TINI" aria-label="TINI"></button>
+  <button type="button" class="nav-dot" data-i="4" data-label="Video" aria-label="Video"></button>
+  <button type="button" class="nav-dot" data-i="5" data-label="Koncert" aria-label="Koncert"></button>
+  <button type="button" class="nav-dot" data-i="6" data-label="Finále" aria-label="Finále"></button>
 </nav>
 
 <script>
@@ -1334,18 +1352,35 @@ const sections = document.querySelectorAll('section');
 const dots = document.querySelectorAll('.nav-dot');
 
 const secObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const idx = [...sections].indexOf(entry.target);
-      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-    }
+  const visible = entries.filter(e => e.isIntersecting && e.intersectionRatio > 0.08);
+  if (!visible.length) return;
+  visible.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+  const idx = [...sections].indexOf(visible[0].target);
+  if (idx < 0) return;
+  dots.forEach((d, i) => {
+    const on = i === idx;
+    d.classList.toggle('active', on);
+    if (on) d.setAttribute('aria-current', 'true');
+    else d.removeAttribute('aria-current');
   });
-}, { threshold: 0.5 });
+}, { threshold: [0.1, 0.25, 0.45, 0.65, 0.85], rootMargin: '-5% 0px -5% 0px' });
 
 sections.forEach(s => secObserver.observe(s));
-dots.forEach(d => d.addEventListener('click', () => {
-  sections[+d.dataset.i]?.scrollIntoView({ behavior: 'smooth' });
-}));
+
+function scrollToSectionIndex(i) {
+  const sec = sections[i];
+  if (!sec) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  sec.scrollIntoView({
+    block: 'start',
+    inline: 'nearest',
+    behavior: reduce ? 'auto' : 'smooth',
+  });
+}
+
+dots.forEach(d => {
+  d.addEventListener('click', () => scrollToSectionIndex(+d.dataset.i));
+});
 
 /* ==================== YOUTUBE PLAYER ==================== */
 let videoActive = false;
