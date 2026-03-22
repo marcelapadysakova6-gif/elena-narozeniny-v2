@@ -854,6 +854,14 @@
       width:1px;height:1px;opacity:0;
       pointer-events:none;z-index:-1;
     }
+
+    /* ==================== GLOBAL FLOATING HEARTS ==================== */
+    #hearts-bg{
+      position:fixed;inset:0;
+      width:100%;height:100%;
+      pointer-events:none;
+      z-index:1;
+    }
   </style>
 </head>
 <body>
@@ -876,6 +884,9 @@
 
 <!-- PARTICLES -->
 <div id="particles"></div>
+
+<!-- GLOBAL FLOATING HEARTS CANVAS -->
+<canvas id="hearts-bg"></canvas>
 
 <!-- ============ SECTION 1 — HERO ============ -->
 <section class="hero" id="sec-hero">
@@ -1695,6 +1706,90 @@ particleColors.forEach(c => {
     particlesEl.appendChild(p);
   }
 });
+
+/* ==================== GLOBAL FLOATING HEARTS (all sections) ==================== */
+const heartsBg = document.getElementById('hearts-bg');
+const heartsCtx = heartsBg.getContext('2d');
+
+function resizeHeartsBg() {
+  heartsBg.width = window.innerWidth;
+  heartsBg.height = window.innerHeight;
+}
+resizeHeartsBg();
+window.addEventListener('resize', resizeHeartsBg);
+
+const HEART_BG_COLORS = [
+  '#e0197a','#ff6987','#ce93d8','#c084fc',
+  '#f5c842','#ffb6c1','#ff4d80','#e8a8d0',
+  '#dc143c','#b060d0'
+];
+
+class BgHeart {
+  constructor(startRandom) {
+    this.reset(startRandom);
+  }
+  reset(startRandom) {
+    this.x = Math.random() * window.innerWidth;
+    this.y = startRandom ? Math.random() * window.innerHeight : window.innerHeight + 20;
+    this.size = Math.random() * 11 + 4;
+    this.speed = Math.random() * 0.55 + 0.2;
+    this.opacity = Math.random() * 0.28 + 0.07;
+    this.wobble = Math.random() * Math.PI * 2;
+    this.wobbleSpeed = (Math.random() - 0.5) * 0.022;
+    this.color = HEART_BG_COLORS[Math.floor(Math.random() * HEART_BG_COLORS.length)];
+    this.rotation = (Math.random() - 0.5) * 0.6;
+    this.rotSpeed = (Math.random() - 0.5) * 0.008;
+    // ~20% chance sparkle dot instead of heart
+    this.isStar = Math.random() < 0.2;
+  }
+  update() {
+    this.y -= this.speed;
+    this.wobble += this.wobbleSpeed;
+    this.x += Math.sin(this.wobble) * 0.45;
+    this.rotation += this.rotSpeed;
+    if (this.y < -20) this.reset(false);
+  }
+  drawHeart(ctx, s) {
+    ctx.beginPath();
+    ctx.moveTo(0, s * 0.4);
+    ctx.bezierCurveTo(-s * 1.05, -s * 0.18, -s * 1.05, -s * 0.95, 0, -s * 0.48);
+    ctx.bezierCurveTo(s * 1.05, -s * 0.95, s * 1.05, -s * 0.18, 0, s * 0.4);
+    ctx.fill();
+  }
+  draw() {
+    heartsCtx.save();
+    heartsCtx.globalAlpha = this.opacity;
+    heartsCtx.fillStyle = this.color;
+    heartsCtx.translate(this.x, this.y);
+    heartsCtx.rotate(this.rotation);
+    if (this.isStar) {
+      heartsCtx.beginPath();
+      heartsCtx.arc(0, 0, this.size * 0.38, 0, Math.PI * 2);
+      heartsCtx.fill();
+      // cross sparkle lines
+      heartsCtx.globalAlpha = this.opacity * 0.5;
+      heartsCtx.strokeStyle = this.color;
+      heartsCtx.lineWidth = 0.8;
+      const r = this.size * 0.7;
+      heartsCtx.beginPath();
+      heartsCtx.moveTo(-r, 0); heartsCtx.lineTo(r, 0);
+      heartsCtx.moveTo(0, -r); heartsCtx.lineTo(0, r);
+      heartsCtx.stroke();
+    } else {
+      this.drawHeart(heartsCtx, this.size);
+    }
+    heartsCtx.restore();
+  }
+}
+
+const bgHearts = Array.from({ length: 35 }, () => new BgHeart(true));
+
+function bgHeartsLoop() {
+  heartsCtx.clearRect(0, 0, heartsBg.width, heartsBg.height);
+  bgHearts.forEach(h => { h.update(); h.draw(); });
+  requestAnimationFrame(bgHeartsLoop);
+}
+bgHeartsLoop();
 </script>
 </body>
 </html>
