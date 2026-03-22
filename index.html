@@ -14,6 +14,7 @@
 
     :root{
       color-scheme:only light;
+      --page-gradient:linear-gradient(160deg,#f5e0ff 0%,#fce8f8 25%,#fff8fe 55%,#fde8f6 78%,#f8e0ff 100%);
       --pink:#e0197a;
       --pink-rgb:224,25,122;
       --deep:#f2d8ff;
@@ -31,13 +32,13 @@
       scroll-snap-type:y mandatory;
       overflow-y:scroll;
       overflow-x:hidden;
-      background:#f2d8ff;
+      background:var(--page-gradient);
     }
 
     body{
       font-family:var(--font-sans);
       color:#2a0045;
-      background:#f2d8ff;
+      background:var(--page-gradient);
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
@@ -57,12 +58,7 @@
     /* ==================== LOADER / START SCREEN ==================== */
     #loader{
       position:fixed;inset:0;z-index:9999;
-      background:
-        radial-gradient(ellipse 85% 70% at 50% 45%,rgba(255,255,255,.75) 0%,transparent 62%),
-        radial-gradient(ellipse 65% 55% at 10% 68%,rgba(255,100,200,.55) 0%,transparent 55%),
-        radial-gradient(ellipse 60% 52% at 90% 28%,rgba(190,70,255,.35) 0%,transparent 57%),
-        radial-gradient(ellipse 55% 45% at 50% 100%,rgba(255,150,230,.45) 0%,transparent 50%),
-        linear-gradient(155deg,#f0d0ff 0%,#fad0ee 40%,#f5dcff 80%,#eed0ff 100%);
+      background:var(--page-gradient);
       display:flex;align-items:center;justify-content:center;
       flex-direction:column;gap:24px;
       transition:opacity 1s ease,visibility 1s;
@@ -151,12 +147,7 @@
     /* ==================== HERO ==================== */
     .hero{
       display:flex;align-items:center;justify-content:center;
-      background:
-        radial-gradient(ellipse 85% 70% at 50% 45%,rgba(255,255,255,.75) 0%,transparent 62%),
-        radial-gradient(ellipse 65% 55% at 10% 68%,rgba(255,100,200,.55) 0%,transparent 55%),
-        radial-gradient(ellipse 60% 52% at 90% 28%,rgba(190,70,255,.35) 0%,transparent 57%),
-        radial-gradient(ellipse 55% 45% at 50% 102%,rgba(255,150,230,.45) 0%,transparent 50%),
-        linear-gradient(155deg,#f0d0ff 0%,#fad0ee 40%,#f5dcff 80%,#eed0ff 100%);
+      background:var(--page-gradient);
     }
 
     #fw-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
@@ -252,12 +243,7 @@
 
     /* ==================== PHOTO GALLERY ==================== */
     .gallery{
-      background:
-        radial-gradient(ellipse 85% 70% at 50% 48%,rgba(255,255,255,.72) 0%,transparent 62%),
-        radial-gradient(ellipse 65% 55% at 8% 60%,rgba(255,100,200,.52) 0%,transparent 55%),
-        radial-gradient(ellipse 60% 52% at 90% 22%,rgba(190,70,255,.32) 0%,transparent 57%),
-        radial-gradient(ellipse 55% 45% at 45% 100%,rgba(255,150,230,.42) 0%,transparent 50%),
-        linear-gradient(155deg,#f0d0ff 0%,#fad0ee 40%,#f5dcff 80%,#eed0ff 100%);
+      background:var(--page-gradient);
       display:flex;align-items:center;justify-content:center;
       padding:60px 20px;
     }
@@ -330,12 +316,7 @@
     /* ==================== POEM ==================== */
     /* ---- POEM: mobile-first, fits one screen ---- */
     .poem-section{
-      background:
-        radial-gradient(ellipse 85% 70% at 50% 46%,rgba(255,255,255,.72) 0%,transparent 62%),
-        radial-gradient(ellipse 65% 55% at 85% 72%,rgba(255,100,200,.52) 0%,transparent 55%),
-        radial-gradient(ellipse 60% 52% at 10% 25%,rgba(190,70,255,.32) 0%,transparent 57%),
-        radial-gradient(ellipse 55% 45% at 60% 100%,rgba(255,150,230,.42) 0%,transparent 50%),
-        linear-gradient(155deg,#f0d0ff 0%,#fad0ee 40%,#f5dcff 80%,#eed0ff 100%);
+      background:var(--page-gradient);
       display:flex;align-items:center;justify-content:center;
       padding:6px 14px;
     }
@@ -414,12 +395,7 @@
 
     /* ==================== TINI ==================== */
     .tini-section{
-      background:
-        radial-gradient(ellipse 88% 72% at 50% 48%,rgba(255,255,255,.74) 0%,transparent 62%),
-        radial-gradient(ellipse 65% 55% at 6% 72%,rgba(255,100,200,.54) 0%,transparent 55%),
-        radial-gradient(ellipse 62% 52% at 94% 28%,rgba(190,70,255,.34) 0%,transparent 57%),
-        radial-gradient(ellipse 55% 45% at 50% 2%,rgba(255,150,230,.38) 0%,transparent 50%),
-        linear-gradient(155deg,#f0d0ff 0%,#fad0ee 40%,#f5dcff 80%,#eed0ff 100%);
+      background:var(--page-gradient);
       display:flex;flex-direction:column;
       align-items:center;justify-content:center;
       padding:30px 16px;
@@ -520,12 +496,7 @@
 
     /* ==================== VIDEO ==================== */
     .video-section{
-      background:
-        radial-gradient(ellipse 85% 70% at 50% 46%,rgba(255,255,255,.72) 0%,transparent 62%),
-        radial-gradient(ellipse 65% 55% at 5% 28%,rgba(255,100,200,.52) 0%,transparent 55%),
-        radial-gradient(ellipse 60% 52% at 90% 72%,rgba(190,70,255,.32) 0%,transparent 57%),
-        radial-gradient(ellipse 55% 45% at 35% 100%,rgba(255,150,230,.42) 0%,transparent 50%),
-        linear-gradient(155deg,#f0d0ff 0%,#fad0ee 40%,#f5dcff 80%,#eed0ff 100%);
+      background:var(--page-gradient);
       display:flex;align-items:center;justify-content:center;
       padding:40px 16px;
     }
@@ -592,12 +563,7 @@
 
     /* ==================== CONCERT / ENVELOPE ==================== */
     .concert-section{
-      background:
-        radial-gradient(ellipse 85% 70% at 50% 44%,rgba(255,255,255,.72) 0%,transparent 62%),
-        radial-gradient(ellipse 65% 55% at 86% 62%,rgba(255,100,200,.52) 0%,transparent 55%),
-        radial-gradient(ellipse 60% 52% at 12% 28%,rgba(190,70,255,.32) 0%,transparent 57%),
-        radial-gradient(ellipse 55% 45% at 60% 100%,rgba(255,150,230,.42) 0%,transparent 50%),
-        linear-gradient(155deg,#f0d0ff 0%,#fad0ee 40%,#f5dcff 80%,#eed0ff 100%);
+      background:var(--page-gradient);
       display:flex;flex-direction:column;
       align-items:center;justify-content:center;
       padding:40px 16px;
@@ -725,12 +691,7 @@
 
     /* ==================== FINALE ==================== */
     .finale{
-      background:
-        radial-gradient(ellipse 85% 70% at 50% 45%,rgba(255,255,255,.75) 0%,transparent 62%),
-        radial-gradient(ellipse 65% 55% at 10% 72%,rgba(255,100,200,.55) 0%,transparent 55%),
-        radial-gradient(ellipse 62% 52% at 90% 28%,rgba(190,70,255,.35) 0%,transparent 57%),
-        radial-gradient(ellipse 55% 45% at 60% 100%,rgba(255,150,230,.45) 0%,transparent 50%),
-        linear-gradient(155deg,#f0d0ff 0%,#fad0ee 40%,#f5dcff 80%,#eed0ff 100%);
+      background:var(--page-gradient);
       display:flex;flex-direction:column;
       align-items:center;justify-content:center;
       text-align:center;padding:40px 20px;
@@ -1586,7 +1547,7 @@ const FWC = ['#f5c842','#e0197a','#c084fc','#fff','#9b30d8','#ff6b9d','#ffe066',
 
 function resizeCv() {
   cv.width = innerWidth; cv.height = innerHeight;
-  ctx.fillStyle = '#f0d0ff';
+  ctx.fillStyle = '#fff8fe';
   ctx.fillRect(0, 0, cv.width, cv.height);
 }
 resizeCv();
@@ -1686,7 +1647,7 @@ let lastFW = 0;
 function fwLoop(ts) {
   if (!fwActive) return;
   requestAnimationFrame(fwLoop);
-  ctx.fillStyle = 'rgba(240,208,255,0.35)';
+  ctx.fillStyle = 'rgba(255,248,254,0.4)';
   ctx.fillRect(0, 0, cv.width, cv.height);
   if (ts - lastFW > 700) {
     fireworks.push(new Firework());
