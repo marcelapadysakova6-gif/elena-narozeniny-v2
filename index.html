@@ -857,12 +857,26 @@
       pointer-events:none;z-index:-1;
     }
 
-    /* ==================== GLOBAL FLOATING HEARTS ==================== */
+    /* ==================== GLOBAL FLOATING HEARTS (CSS) ==================== */
     #hearts-bg{
       position:fixed;inset:0;
-      width:100%;height:100%;
       pointer-events:none;
       z-index:1;
+      overflow:hidden;
+    }
+    .fh{
+      position:absolute;
+      bottom:-40px;
+      font-size:var(--s,16px);
+      opacity:0;
+      animation:floatH var(--d,18s) linear var(--dl,0s) infinite;
+      user-select:none;
+    }
+    @keyframes floatH{
+      0%{transform:translateY(0) rotate(0deg);opacity:0}
+      5%{opacity:var(--op,.18)}
+      90%{opacity:var(--op,.18)}
+      100%{transform:translateY(-105vh) rotate(var(--rot,180deg));opacity:0}
     }
   </style>
 </head>
@@ -887,8 +901,8 @@
 <!-- PARTICLES -->
 <div id="particles"></div>
 
-<!-- GLOBAL FLOATING HEARTS CANVAS -->
-<canvas id="hearts-bg"></canvas>
+<!-- GLOBAL FLOATING HEARTS (CSS) -->
+<div id="hearts-bg"></div>
 
 <!-- ============ SECTION 1 — HERO ============ -->
 <section class="hero" id="sec-hero">
@@ -1570,7 +1584,11 @@ const cv = document.getElementById('fw-canvas');
 const ctx = cv.getContext('2d');
 const FWC = ['#f5c842','#e0197a','#c084fc','#fff','#9b30d8','#ff6b9d','#ffe066','#ce93d8'];
 
-function resizeCv() { cv.width = innerWidth; cv.height = innerHeight; }
+function resizeCv() {
+  cv.width = innerWidth; cv.height = innerHeight;
+  ctx.fillStyle = '#f0d0ff';
+  ctx.fillRect(0, 0, cv.width, cv.height);
+}
 resizeCv();
 addEventListener('resize', resizeCv);
 
@@ -1668,7 +1686,7 @@ let lastFW = 0;
 function fwLoop(ts) {
   if (!fwActive) return;
   requestAnimationFrame(fwLoop);
-  ctx.fillStyle = 'rgba(240,210,255,.15)';
+  ctx.fillStyle = 'rgba(240,208,255,0.35)';
   ctx.fillRect(0, 0, cv.width, cv.height);
   if (ts - lastFW > 700) {
     fireworks.push(new Firework());
@@ -1709,89 +1727,25 @@ particleColors.forEach(c => {
   }
 });
 
-/* ==================== GLOBAL FLOATING HEARTS (all sections) ==================== */
-const heartsBg = document.getElementById('hearts-bg');
-const heartsCtx = heartsBg.getContext('2d');
-
-function resizeHeartsBg() {
-  heartsBg.width = window.innerWidth;
-  heartsBg.height = window.innerHeight;
-}
-resizeHeartsBg();
-window.addEventListener('resize', resizeHeartsBg);
-
-const HEART_BG_COLORS = [
-  '#e0197a','#ff6987','#ce93d8','#c084fc',
-  '#f5c842','#ffb6c1','#ff4d80','#e8a8d0',
-  '#dc143c','#b060d0'
-];
-
-class BgHeart {
-  constructor(startRandom) {
-    this.reset(startRandom);
+/* ==================== GLOBAL FLOATING HEARTS (CSS divs, all sections) ==================== */
+(function() {
+  const container = document.getElementById('hearts-bg');
+  const HEARTS = ['♥','♥','♥','✦','♥','♥','✦','♥'];
+  const COLORS = ['#e0197a','#ff6987','#ce93d8','#c084fc','#ffb6c1','#ff4d80','#f5c842','#dc143c','#b060d0','#e8a8d0'];
+  for (let i = 0; i < 30; i++) {
+    const el = document.createElement('span');
+    el.className = 'fh';
+    el.textContent = HEARTS[i % HEARTS.length];
+    const sz = Math.random() * 14 + 7;
+    const op = (Math.random() * 0.2 + 0.07).toFixed(2);
+    const dur = (Math.random() * 16 + 12).toFixed(1);
+    const delay = (Math.random() * 20).toFixed(1);
+    const left = (Math.random() * 100).toFixed(1);
+    const rot = Math.floor(Math.random() * 360);
+    el.style.cssText = `left:${left}%;--s:${sz}px;--op:${op};--d:${dur}s;--dl:${delay}s;--rot:${rot}deg;color:${COLORS[i % COLORS.length]}`;
+    container.appendChild(el);
   }
-  reset(startRandom) {
-    this.x = Math.random() * window.innerWidth;
-    this.y = startRandom ? Math.random() * window.innerHeight : window.innerHeight + 20;
-    this.size = Math.random() * 11 + 4;
-    this.speed = Math.random() * 0.55 + 0.2;
-    this.opacity = Math.random() * 0.28 + 0.07;
-    this.wobble = Math.random() * Math.PI * 2;
-    this.wobbleSpeed = (Math.random() - 0.5) * 0.022;
-    this.color = HEART_BG_COLORS[Math.floor(Math.random() * HEART_BG_COLORS.length)];
-    this.rotation = (Math.random() - 0.5) * 0.6;
-    this.rotSpeed = (Math.random() - 0.5) * 0.008;
-    // ~20% chance sparkle dot instead of heart
-    this.isStar = Math.random() < 0.2;
-  }
-  update() {
-    this.y -= this.speed;
-    this.wobble += this.wobbleSpeed;
-    this.x += Math.sin(this.wobble) * 0.45;
-    this.rotation += this.rotSpeed;
-    if (this.y < -20) this.reset(false);
-  }
-  drawHeart(ctx, s) {
-    ctx.beginPath();
-    ctx.moveTo(0, s * 0.4);
-    ctx.bezierCurveTo(-s * 1.05, -s * 0.18, -s * 1.05, -s * 0.95, 0, -s * 0.48);
-    ctx.bezierCurveTo(s * 1.05, -s * 0.95, s * 1.05, -s * 0.18, 0, s * 0.4);
-    ctx.fill();
-  }
-  draw() {
-    heartsCtx.save();
-    heartsCtx.globalAlpha = this.opacity;
-    heartsCtx.fillStyle = this.color;
-    heartsCtx.translate(this.x, this.y);
-    heartsCtx.rotate(this.rotation);
-    if (this.isStar) {
-      heartsCtx.beginPath();
-      heartsCtx.arc(0, 0, this.size * 0.38, 0, Math.PI * 2);
-      heartsCtx.fill();
-      // cross sparkle lines
-      heartsCtx.globalAlpha = this.opacity * 0.5;
-      heartsCtx.strokeStyle = this.color;
-      heartsCtx.lineWidth = 0.8;
-      const r = this.size * 0.7;
-      heartsCtx.beginPath();
-      heartsCtx.moveTo(-r, 0); heartsCtx.lineTo(r, 0);
-      heartsCtx.moveTo(0, -r); heartsCtx.lineTo(0, r);
-      heartsCtx.stroke();
-    } else {
-      this.drawHeart(heartsCtx, this.size);
-    }
-    heartsCtx.restore();
-  }
-}
-
-const bgHearts = Array.from({ length: 35 }, () => new BgHeart(true));
-
-function bgHeartsLoop() {
-  heartsCtx.clearRect(0, 0, heartsBg.width, heartsBg.height);
-  bgHearts.forEach(h => { h.update(); h.draw(); });
-  requestAnimationFrame(bgHeartsLoop);
-}
-bgHeartsLoop();
+})();
 </script>
 </body>
 </html>
