@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elenka 20 ✨ Všechno nejlepší!</title>
+  <meta name="description" content="Přání k 20. narozeninám pro Elenku"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    :root{
+      --purple:#7b2d8b;
+      --deep:#1a0033;
+      --mid:#2d0050;
+      --gold:#f5c842;
+      --gold-light:#fff3b0;
+      --pink:#e91e8c;
+      --lpurp:#ce93d8;
+      --magenta:#c2185b;
+      --lavender:#e8d5ff;
+      --font-serif:'Cormorant Garamond','Playfair Display',serif;
+      --font-sans:'Inter','Quicksand',sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+      scroll-snap-type:y mandatory;
+      overflow-y:scroll;
+      overflow-x:hidden;
+      background:var(--deep);
+    }
+
+    body{
+      font-family:var(--font-sans);
+      color:#fff;
+      background:var(--deep);
+      -webkit-font-smoothing:antialiased;
+    }
+
+    ::selection{background:rgba(233,30,140,.4);color:#fff}
+
+    /* ==================== LOADER ==================== */
+    #loader{
+      position:fixed;inset:0;z-index:9999;
+      background:var(--deep);
+      display:flex;align-items:center;justify-content:center;
+      flex-direction:column;gap:24px;
+      transition:opacity .8s ease,visibility .8s;
+    }
+    #loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+    .loader-num{
+      font-family:var(--font-serif);
+      font-size:clamp(60px,14vw,120px);
+      font-weight:700;
+      background:linear-gradient(135deg,var(--gold) 0%,#fff9c4 40%,var(--gold) 60%,#e6a800 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      filter:drop-shadow(0 0 40px rgba(245,200,66,.6));
+      animation:loaderPulse 1.2s ease-in-out infinite;
+    }
+    @keyframes loaderPulse{
+      0%,100%{transform:scale(1);filter:drop-shadow(0 0 40px rgba(245,200,66,.6))}
+      50%{transform:scale(1.05);filter:drop-shadow(0 0 60px rgba(245,200,66,.9))}
+    }
+    .loader-bar{
+      width:180px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;
+    }
+    .loader-fill{
+      height:100%;width:0%;
+      background:linear-gradient(90deg,var(--gold),var(--pink));
+      border-radius:2px;
+      animation:loadFill 1.8s ease-out forwards;
+    }
+    @keyframes loadFill{to{width:100%}}
+
+    /* ==================== SECTIONS ==================== */
+    section{
+      min-height:100vh;min-height:100dvh;
+      scroll-snap-align:start;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* ==================== HERO ==================== */
+    .hero{
+      display:flex;align-items:center;justify-content:center;
+      background:
+        radial-gradient(ellipse at 20% 30%,rgba(233,30,140,.5) 0%,transparent 50%),
+        radial-gradient(ellipse at 80% 70%,rgba(192,96,240,.35) 0%,transparent 50%),
+        radial-gradient(ellipse at 60% 10%,rgba(255,80,160,.2) 0%,transparent 40%),
+        linear-gradient(160deg,#0d001a 0%,var(--mid) 40%,#3a006e 70%,var(--deep) 100%);
+    }
+
+    #fw-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+
+    .hero-content{
+      position:relative;z-index:10;
+      text-align:center;
+      padding:40px 20px;
+    }
+
+    .hero-eyebrow{
+      font-family:var(--font-sans);
+      font-size:clamp(11px,1.4vw,14px);
+      font-weight:500;
+      letter-spacing:.35em;
+      text-transform:uppercase;
+      color:var(--lpurp);
+      opacity:0;
+      transform:translateY(20px);
+      margin-bottom:16px;
+    }
+
+    .hero-number{
+      font-family:var(--font-serif);
+      font-size:clamp(100px,22vw,220px);
+      font-weight:700;
+      line-height:.85;
+      background:linear-gradient(135deg,var(--gold) 0%,#fff9c4 30%,var(--gold) 55%,#e6a800 80%,var(--gold-light) 100%);
+      background-size:200% 200%;
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      filter:drop-shadow(0 0 50px rgba(245,200,66,.5));
+      animation:heroShimmer 4s ease-in-out infinite;
+      opacity:0;transform:scale(.8);
+    }
+    @keyframes heroShimmer{
+      0%,100%{background-position:0% 50%;filter:drop-shadow(0 0 50px rgba(245,200,66,.5))}
+      50%{background-position:100% 50%;filter:drop-shadow(0 0 80px rgba(245,200,66,.8))}
+    }
+
+    .hero-let{
+      font-family:var(--font-serif);
+      font-size:clamp(22px,4vw,42px);
+      font-weight:300;
+      font-style:italic;
+      color:rgba(255,255,255,.8);
+      letter-spacing:.2em;
+      margin:8px 0 20px;
+      opacity:0;transform:translateY(20px);
+    }
+
+    .hero-name{
+      font-family:var(--font-serif);
+      font-size:clamp(32px,7vw,72px);
+      font-weight:700;
+      letter-spacing:.08em;
+      background:linear-gradient(90deg,var(--pink),var(--lpurp),var(--gold),var(--pink));
+      background-size:300%;
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      animation:nameShine 4s linear infinite;
+      opacity:0;transform:translateY(20px);
+    }
+    @keyframes nameShine{0%{background-position:0%}100%{background-position:300%}}
+
+    .hero-scroll{
+      position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+      z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px;
+      opacity:0;
+    }
+    .hero-scroll span{
+      font-size:11px;letter-spacing:.25em;text-transform:uppercase;
+      color:rgba(255,255,255,.4);font-weight:500;
+    }
+    .scroll-line{
+      width:1px;height:40px;
+      background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);
+      animation:scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse{
+      0%,100%{opacity:.4;transform:scaleY(1)}
+      50%{opacity:1;transform:scaleY(1.2)}
+    }
+
+    /* Polaroids */
+    .polar{
+      position:absolute;
+      background:#fff;padding:6px 6px 26px;
+      box-shadow:0 8px 32px rgba(0,0,0,.6);
+      transform:rotate(var(--r,0deg));
+      transition:transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .4s,z-index 0s;
+      z-index:5;cursor:pointer;
+      opacity:0;
+    }
+    .polar:hover{
+      transform:scale(1.3) rotate(0deg) !important;
+      box-shadow:0 20px 60px rgba(0,0,0,.7),0 0 30px rgba(233,30,140,.4);
+      z-index:30;
+    }
+    .polar img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+    .polar-cap{
+      position:absolute;bottom:5px;left:0;right:0;text-align:center;
+      font-family:var(--font-sans);font-size:8px;font-weight:600;
+      color:#666;letter-spacing:.06em;text-transform:uppercase;
+    }
+    .polar-bunny:hover{
+      transform:scale(2.2) rotate(0deg) !important;
+      box-shadow:0 30px 70px rgba(0,0,0,.8),0 0 50px rgba(233,30,140,.5);
+    }
+
+    /* ==================== PHOTO GALLERY ==================== */
+    .gallery{
+      background:linear-gradient(180deg,var(--deep) 0%,#0d001a 50%,var(--deep) 100%);
+      display:flex;align-items:center;justify-content:center;
+      padding:60px 20px;
+    }
+
+    .gallery-inner{
+      max-width:1000px;width:100%;
+    }
+
+    .gallery-title{
+      font-family:var(--font-serif);
+      font-size:clamp(12px,1.6vw,16px);
+      font-weight:400;
+      letter-spacing:.4em;
+      text-transform:uppercase;
+      color:var(--lpurp);
+      text-align:center;
+      margin-bottom:40px;
+      opacity:0;transform:translateY(30px);
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      grid-template-rows:repeat(3,1fr);
+      gap:8px;
+      aspect-ratio:4/3;
+    }
+
+    .g-item{
+      position:relative;overflow:hidden;border-radius:6px;
+      cursor:pointer;
+      opacity:0;transform:translateY(40px);
+    }
+    .g-item img{
+      width:100%;height:100%;object-fit:cover;
+      transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .4s;
+    }
+    .g-item:hover img{transform:scale(1.1);filter:brightness(.6)}
+    .g-item::after{
+      content:attr(data-label);
+      position:absolute;inset:0;
+      display:flex;align-items:center;justify-content:center;
+      font-family:var(--font-serif);font-size:clamp(13px,1.8vw,18px);
+      font-style:italic;letter-spacing:.1em;
+      color:var(--gold);text-shadow:0 2px 20px rgba(0,0,0,.8);
+      opacity:0;transition:opacity .4s;
+      background:radial-gradient(ellipse,rgba(26,0,51,.5),transparent 70%);
+    }
+    .g-item:hover::after{opacity:1}
+
+    .g-item:nth-child(1){grid-column:1/3;grid-row:1/2}
+    .g-item:nth-child(2){grid-column:3/4;grid-row:1/2}
+    .g-item:nth-child(3){grid-column:4/5;grid-row:1/3}
+    .g-item:nth-child(4){grid-column:1/2;grid-row:2/3}
+    .g-item:nth-child(5){grid-column:2/4;grid-row:2/3}
+    .g-item:nth-child(6){grid-column:1/3;grid-row:3/4}
+    .g-item:nth-child(7){grid-column:3/5;grid-row:3/4}
+
+    @media(max-width:600px){
+      .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+        grid-template-rows:auto;
+        aspect-ratio:auto;
+      }
+      .g-item:nth-child(1){grid-column:1/3;grid-row:auto}
+      .g-item:nth-child(2){grid-column:auto;grid-row:auto}
+      .g-item:nth-child(3){grid-column:auto;grid-row:auto}
+      .g-item:nth-child(4){grid-column:auto;grid-row:auto}
+      .g-item:nth-child(5){grid-column:1/3;grid-row:auto}
+      .g-item:nth-child(6){grid-column:auto;grid-row:auto}
+      .g-item:nth-child(7){grid-column:auto;grid-row:auto}
+      .g-item img{aspect-ratio:4/3;height:auto}
+    }
+
+    /* ==================== POEM ==================== */
+    .poem-section{
+      background:
+        radial-gradient(ellipse at 50% 0%,rgba(123,45,139,.15) 0%,transparent 50%),
+        radial-gradient(ellipse at 80% 100%,rgba(233,30,140,.1) 0%,transparent 50%),
+        linear-gradient(180deg,#0d001a 0%,var(--deep) 50%,#0d001a 100%);
+      display:flex;align-items:center;justify-content:center;
+      padding:60px 20px;
+    }
+
+    .poem-card{
+      max-width:700px;width:100%;
+      text-align:center;
+      position:relative;
+      padding:50px 30px;
+    }
+
+    .poem-card::before{
+      content:'';position:absolute;
+      top:0;left:50%;transform:translateX(-50%);
+      width:1px;height:50px;
+      background:linear-gradient(to bottom,transparent,var(--gold));
+      opacity:0;
+    }
+
+    .poem-heading{
+      font-family:var(--font-serif);
+      font-size:clamp(24px,4vw,38px);
+      font-weight:300;
+      font-style:italic;
+      color:var(--gold);
+      letter-spacing:.05em;
+      margin-bottom:8px;
+      opacity:0;transform:translateY(20px);
+    }
+
+    .poem-divider{
+      width:60px;height:1px;
+      background:linear-gradient(90deg,transparent,var(--gold),transparent);
+      margin:0 auto 30px;
+      opacity:0;
+    }
+
+    .poem-line{
+      font-family:var(--font-serif);
+      font-size:clamp(14px,2vw,19px);
+      line-height:1.9;
+      color:var(--lavender);
+      padding:2px 0;
+      opacity:0;
+      transform:translateY(12px);
+      transition:all .8s cubic-bezier(.25,.46,.45,.94);
+    }
+    .poem-line.vis{opacity:1;transform:translateY(0)}
+    .poem-line.em{
+      font-style:italic;color:var(--gold);
+      font-size:clamp(15px,2.2vw,21px);
+    }
+    .poem-line.strong{
+      font-weight:700;
+      font-size:clamp(15px,2.2vw,21px);
+      background:linear-gradient(90deg,var(--pink),var(--lpurp));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .poem-line.big{
+      font-weight:700;color:#fff;
+      font-size:clamp(16px,2.4vw,22px);
+    }
+    .poem-line.spacer{height:14px}
+
+    .poem-rose{
+      margin-top:30px;font-size:28px;
+      opacity:0;transform:scale(0);
+      transition:all .6s cubic-bezier(.34,1.56,.64,1) 2.4s;
+    }
+    .poem-rose.vis{opacity:1;transform:scale(1)}
+
+    /* ==================== TINI ==================== */
+    .tini-section{
+      background:
+        radial-gradient(ellipse at 30% 20%,rgba(233,30,140,.3) 0%,transparent 50%),
+        radial-gradient(ellipse at 70% 80%,rgba(123,45,139,.3) 0%,transparent 50%),
+        linear-gradient(160deg,#0d001a 0%,var(--mid) 50%,#0d001a 100%);
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      padding:40px 16px;
+    }
+
+    .tini-section::before{
+      content:'';position:absolute;top:-50%;left:-50%;
+      width:200%;height:200%;
+      background:conic-gradient(from 0deg at 50% 50%,
+        transparent 0deg,rgba(233,30,140,.04) 60deg,
+        transparent 120deg,rgba(206,147,216,.03) 180deg,
+        transparent 240deg,rgba(245,200,66,.02) 300deg,
+        transparent 360deg);
+      animation:rotSlow 30s linear infinite;
+      pointer-events:none;
+    }
+    @keyframes rotSlow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+    .tini-logo{
+      font-family:var(--font-serif);
+      font-size:clamp(36px,8vw,72px);
+      font-weight:700;
+      letter-spacing:.35em;
+      background:linear-gradient(135deg,var(--gold) 0%,#fff9c4 30%,var(--gold) 60%,#e6a800 100%);
+      background-size:200%;
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      animation:nameShine 5s linear infinite;
+      filter:drop-shadow(0 0 20px rgba(245,200,66,.4));
+      position:relative;z-index:2;
+      opacity:0;transform:translateY(30px);
+    }
+
+    .tini-sub{
+      font-family:var(--font-sans);
+      color:var(--lpurp);
+      font-size:clamp(10px,1.4vw,14px);
+      letter-spacing:.3em;
+      text-transform:uppercase;
+      font-weight:400;
+      margin:8px 0 24px;
+      position:relative;z-index:2;
+      opacity:0;transform:translateY(20px);
+    }
+
+    .tini-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:14px;max-width:800px;width:100%;
+      position:relative;z-index:2;
+      margin-bottom:20px;
+    }
+
+    .tini-card{
+      position:relative;border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 4px 30px rgba(123,45,139,.5);
+      transition:transform .45s cubic-bezier(.34,1.4,.64,1),box-shadow .4s;
+      opacity:0;transform:translateY(40px);
+    }
+    .tini-card:hover{
+      transform:translateY(-8px) scale(1.03);
+      box-shadow:0 16px 50px rgba(233,30,140,.5),0 0 30px rgba(245,200,66,.15);
+    }
+    .tini-card img{
+      width:100%;height:300px;object-fit:cover;display:block;
+      transition:transform .7s cubic-bezier(.25,.46,.45,.94),filter .5s;
+      transform-origin:center 30%;
+    }
+    .tini-card:hover img{transform:scale(1.4);filter:brightness(.35) saturate(1.2)}
+    .tini-card::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(26,0,51,.9) 0%,rgba(26,0,51,.3) 40%,transparent 100%);
+      opacity:0;transition:opacity .4s;z-index:1;
+    }
+    .tini-card:hover::after{opacity:1}
+    .tini-card-text{
+      position:absolute;bottom:0;left:0;right:0;
+      padding:24px 16px;
+      font-family:var(--font-serif);font-size:16px;
+      font-style:italic;color:var(--gold);
+      letter-spacing:.08em;text-align:center;
+      text-shadow:0 2px 20px rgba(0,0,0,.8);
+      opacity:0;transform:translateY(10px);
+      transition:all .4s;z-index:2;
+    }
+    .tini-card:hover .tini-card-text{opacity:1;transform:translateY(0)}
+
+    @media(max-width:600px){
+      .tini-card img{height:180px}
+      .tini-grid{gap:8px}
+    }
+
+    /* ==================== VIDEO ==================== */
+    .video-section{
+      background:
+        radial-gradient(ellipse at 50% 30%,rgba(233,30,140,.2) 0%,transparent 50%),
+        linear-gradient(180deg,#0d001a 0%,var(--mid) 50%,#0d001a 100%);
+      display:flex;align-items:center;justify-content:center;
+      padding:40px 16px;
+    }
+
+    .video-inner{
+      max-width:860px;width:100%;
+      display:flex;flex-direction:column;
+      align-items:center;
+      position:relative;z-index:2;
+    }
+
+    .video-frame{
+      position:relative;width:100%;
+      padding-top:56.25%;
+      border-radius:16px;overflow:hidden;
+      box-shadow:0 0 60px rgba(233,30,140,.3),0 0 120px rgba(123,45,139,.15);
+      border:1px solid rgba(206,147,216,.2);
+      background:#000;
+      opacity:0;transform:translateY(40px);
+    }
+
+    .video-thumb{
+      position:absolute;inset:0;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .video-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .video-overlay{
+      position:absolute;inset:0;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;gap:16px;
+      background:rgba(26,0,51,.5);
+      transition:background .3s;
+    }
+    .video-thumb:hover .video-overlay{background:rgba(26,0,51,.3)}
+    .play-circle{
+      width:80px;height:80px;
+      background:rgba(233,30,140,.9);
+      border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:30px;padding-left:4px;
+      box-shadow:0 0 40px rgba(233,30,140,.7),0 0 80px rgba(233,30,140,.3);
+      transition:all .3s;
+    }
+    .video-thumb:hover .play-circle{
+      transform:scale(1.1);
+      box-shadow:0 0 60px rgba(233,30,140,.9),0 0 120px rgba(233,30,140,.4);
+    }
+    .video-label{
+      color:rgba(255,255,255,.8);font-size:13px;
+      letter-spacing:.2em;font-weight:500;
+    }
+
+    .play-btn{
+      margin-top:24px;
+      display:inline-flex;align-items:center;gap:10px;
+      background:linear-gradient(135deg,var(--purple),var(--pink));
+      color:#fff;border:none;
+      padding:12px 32px;border-radius:50px;
+      font-family:var(--font-sans);font-size:14px;font-weight:600;
+      cursor:pointer;letter-spacing:.08em;
+      transition:all .3s;
+      opacity:0;transform:translateY(20px);
+    }
+    .play-btn:hover{
+      transform:translateY(-2px) !important;
+      box-shadow:0 8px 30px rgba(233,30,140,.5);
+    }
+
+    /* ==================== CONCERT ==================== */
+    .concert-section{
+      background:
+        radial-gradient(ellipse at 40% 30%,rgba(233,30,140,.25) 0%,transparent 50%),
+        radial-gradient(ellipse at 70% 80%,rgba(123,45,139,.2) 0%,transparent 50%),
+        linear-gradient(180deg,#0d001a 0%,var(--mid) 50%,#0d001a 100%);
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      padding:40px 16px;
+    }
+
+    .concert-inner{max-width:840px;width:100%;position:relative;z-index:2}
+
+    .concert-grid{
+      display:grid;
+      grid-template-columns:1.2fr 1fr 1fr;
+      gap:12px;align-items:start;
+    }
+
+    .concert-poster{
+      border-radius:12px;overflow:hidden;
+      box-shadow:0 0 40px rgba(123,45,139,.6);
+      opacity:0;transform:translateY(40px);
+    }
+    .concert-poster img{width:100%;display:block}
+
+    .ticket{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(245,200,66,.2);
+      border-radius:12px;overflow:hidden;
+      transition:transform .4s cubic-bezier(.34,1.4,.64,1),box-shadow .3s;
+      opacity:0;transform:translateY(40px);
+    }
+    .ticket:hover{
+      transform:translateY(-4px);
+      box-shadow:0 10px 30px rgba(245,200,66,.2);
+    }
+    .ticket img{
+      width:100%;display:block;
+      object-fit:contain;background:#fff;
+      max-height:300px;
+    }
+
+    .concert-info{
+      text-align:center;margin-top:16px;
+      font-family:var(--font-serif);
+      font-size:clamp(14px,2vw,18px);
+      color:var(--gold);letter-spacing:.1em;
+      opacity:0;transform:translateY(20px);
+    }
+    .concert-info-sub{
+      text-align:center;margin-top:6px;
+      font-size:clamp(12px,1.4vw,15px);
+      color:var(--lpurp);letter-spacing:.15em;
+      opacity:0;transform:translateY(20px);
+    }
+
+    @media(max-width:600px){
+      .concert-grid{grid-template-columns:1fr;gap:16px}
+    }
+
+    /* ==================== FINALE ==================== */
+    .finale{
+      background:
+        radial-gradient(ellipse at 50% 50%,rgba(233,30,140,.35) 0%,transparent 50%),
+        radial-gradient(ellipse at 20% 20%,rgba(192,96,240,.2) 0%,transparent 40%),
+        radial-gradient(ellipse at 80% 80%,rgba(245,200,66,.1) 0%,transparent 40%),
+        linear-gradient(180deg,#0d001a 0%,var(--mid) 50%,#2a004d 100%);
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      text-align:center;padding:40px 20px;
+    }
+
+    .stars-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .star{
+      position:absolute;border-radius:50%;background:#fff;
+      animation:twinkle var(--d,3s) ease-in-out infinite var(--dl,0s);
+    }
+    @keyframes twinkle{
+      0%,100%{opacity:.15;transform:scale(1)}
+      50%{opacity:1;transform:scale(1.6)}
+    }
+
+    .finale-emoji{
+      font-size:clamp(48px,10vw,80px);
+      animation:heartbeat 1.5s ease-in-out infinite;
+      position:relative;z-index:2;
+      opacity:0;transform:scale(0);
+    }
+    @keyframes heartbeat{
+      0%,100%{transform:scale(1)}
+      15%{transform:scale(1.15)}
+      30%{transform:scale(1)}
+      45%{transform:scale(1.1)}
+    }
+
+    .finale-heading{
+      font-family:var(--font-serif);
+      font-size:clamp(28px,6vw,56px);
+      font-weight:700;
+      font-style:italic;
+      color:var(--gold);
+      margin:20px 0;
+      text-shadow:0 0 40px rgba(245,200,66,.4);
+      position:relative;z-index:2;
+      opacity:0;transform:translateY(30px);
+    }
+
+    .finale-text{
+      font-family:var(--font-serif);
+      font-size:clamp(16px,2.5vw,22px);
+      color:var(--lavender);
+      line-height:2;
+      max-width:600px;
+      position:relative;z-index:2;
+      opacity:0;transform:translateY(30px);
+    }
+
+    .finale-hearts{
+      margin-top:30px;font-size:28px;
+      letter-spacing:.3em;
+      animation:heartbeat 2s ease-in-out infinite;
+      position:relative;z-index:2;
+      opacity:0;
+    }
+
+    .finale-family{
+      margin-top:24px;
+      font-family:var(--font-serif);
+      font-size:clamp(13px,1.8vw,17px);
+      font-style:italic;
+      color:rgba(255,255,255,.5);
+      letter-spacing:.15em;
+      position:relative;z-index:2;
+      opacity:0;transform:translateY(20px);
+    }
+
+    /* ==================== FLOATING PARTICLES ==================== */
+    .particle{
+      position:fixed;pointer-events:none;border-radius:50%;
+      animation:floatUp linear infinite;
+      opacity:0;z-index:0;
+    }
+    @keyframes floatUp{
+      0%{transform:translateY(100vh) rotate(0deg);opacity:0}
+      8%{opacity:.4}
+      92%{opacity:.15}
+      100%{transform:translateY(-10vh) rotate(720deg);opacity:0}
+    }
+
+    /* ==================== NAV DOTS ==================== */
+    .nav-dots{
+      position:fixed;right:20px;top:50%;transform:translateY(-50%);
+      display:flex;flex-direction:column;gap:12px;
+      z-index:500;
+    }
+    .nav-dot{
+      width:8px;height:8px;border-radius:50%;
+      background:rgba(255,255,255,.2);
+      border:1px solid rgba(255,255,255,.15);
+      cursor:pointer;transition:all .4s;
+      position:relative;
+    }
+    .nav-dot::after{
+      content:attr(data-label);
+      position:absolute;right:20px;top:50%;transform:translateY(-50%);
+      font-size:10px;letter-spacing:.12em;
+      color:rgba(255,255,255,.6);white-space:nowrap;
+      opacity:0;transition:opacity .3s;
+      pointer-events:none;
+    }
+    .nav-dot:hover::after{opacity:1}
+    .nav-dot.active{
+      background:var(--gold);
+      box-shadow:0 0 12px var(--gold);
+      transform:scale(1.5);
+    }
+
+    @media(max-width:600px){
+      .nav-dots{right:10px;gap:10px}
+      .nav-dot::after{display:none}
+      .polar{display:none !important}
+    }
+
+    /* ==================== REVEAL ANIMATIONS ==================== */
+    .reveal{
+      opacity:0;transform:translateY(40px);
+      transition:opacity .8s cubic-bezier(.25,.46,.45,.94),transform .8s cubic-bezier(.25,.46,.45,.94);
+    }
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-scale{
+      opacity:0;transform:scale(0);
+      transition:opacity .6s cubic-bezier(.34,1.56,.64,1),transform .6s cubic-bezier(.34,1.56,.64,1);
+    }
+    .reveal-scale.visible{opacity:1;transform:scale(1)}
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-num">20</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+<!-- ============ SECTION 1 — HERO ============ -->
+<section class="hero" id="sec-hero">
+  <canvas id="fw-canvas"></canvas>
+
+  <!-- Polaroid photos -->
+  <div class="polar" style="width:180px;top:2%;left:1%;--r:-7deg">
+    <img src="images/fam9.png" alt="Vánoce" style="object-position:center 40%"/>
+    <span class="polar-cap">Vánoce</span>
+  </div>
+  <div class="polar" style="width:135px;top:1%;left:21%;--r:5deg">
+    <img src="images/fam3.png" alt="Xindl X" style="object-position:center 30%"/>
+    <span class="polar-cap">Xindl X</span>
+  </div>
+  <div class="polar" style="width:200px;top:3%;right:16%;--r:-3deg">
+    <img src="images/fam10.png" alt="Paříž" style="object-position:center 35%"/>
+    <span class="polar-cap">Paříž</span>
+  </div>
+  <div class="polar" style="width:148px;top:2%;right:0%;--r:7deg">
+    <img src="images/fam4.png" alt="Rodina" style="object-position:center 30%"/>
+    <span class="polar-cap">Rodina</span>
+  </div>
+
+  <div class="polar" style="width:175px;top:36%;left:0%;--r:-5deg">
+    <img src="images/fam1.png" alt="Máma a Eli"/>
+    <span class="polar-cap">Máma a Eli</span>
+  </div>
+  <div class="polar" style="width:140px;top:42%;right:0%;--r:8deg">
+    <img src="images/fam8.png" alt="Eli s růžemi"/>
+    <span class="polar-cap">Eli s růžemi</span>
+  </div>
+  <div class="polar polar-bunny" style="width:140px;top:3%;left:calc(50% - 70px);--r:-2deg">
+    <img src="images/fam11.png" alt="Bruno" style="object-position:center 30%"/>
+    <span class="polar-cap">Bruno</span>
+  </div>
+
+  <div class="polar" style="width:145px;bottom:3%;left:0%;--r:8deg">
+    <img src="images/fam6.png" alt="Eli a pes"/>
+    <span class="polar-cap">Eli a pes</span>
+  </div>
+  <div class="polar" style="width:185px;bottom:2%;left:19%;--r:-5deg">
+    <img src="images/fam5.png" alt="Maledívy" style="object-position:center 35%"/>
+    <span class="polar-cap">Maledívy</span>
+  </div>
+  <div class="polar" style="width:155px;bottom:2%;right:19%;--r:4deg">
+    <img src="images/fam7.png" alt="Láska" style="object-position:center 30%"/>
+    <span class="polar-cap">Láska</span>
+  </div>
+  <div class="polar" style="width:170px;bottom:3%;right:0%;--r:-6deg">
+    <img src="images/fam2.png" alt="Ben" style="object-position:center 35%"/>
+    <span class="polar-cap">Ben</span>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Všechno nejlepší k narozeninám</p>
+    <div class="hero-number">20</div>
+    <p class="hero-let">✨ krásných let ✨</p>
+    <div class="hero-name">Elenka</div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scrolluj dolů</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ============ SECTION 2 — GALLERY ============ -->
+<section class="gallery" id="sec-gallery">
+  <div class="gallery-inner">
+    <p class="gallery-title reveal">Naše společné chvíle</p>
+    <div class="gallery-grid">
+      <div class="g-item" data-label="Maledívy"><img src="images/fam5.png" alt="Maledívy" style="object-position:center 35%"/></div>
+      <div class="g-item" data-label="Paříž"><img src="images/fam10.png" alt="Paříž" style="object-position:center 35%"/></div>
+      <div class="g-item" data-label="Rodina"><img src="images/fam4.png" alt="Rodina" style="object-position:center 30%"/></div>
+      <div class="g-item" data-label="Máma a Eli"><img src="images/fam1.png" alt="Máma a Eli"/></div>
+      <div class="g-item" data-label="Vánoce"><img src="images/fam9.png" alt="Vánoce" style="object-position:center 40%"/></div>
+      <div class="g-item" data-label="Eli s růžemi"><img src="images/fam8.png" alt="Eli s růžemi"/></div>
+      <div class="g-item" data-label="Láska"><img src="images/fam7.png" alt="Láska" style="object-position:center 30%"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 — POEM ============ -->
+<section class="poem-section" id="sec-poem">
+  <div class="poem-card">
+    <h2 class="poem-heading reveal">Přání k dvacetinám</h2>
+    <div class="poem-divider reveal"></div>
+    <div id="poem-lines">
+      <div class="poem-line em">Vše nejlepší Tobě, drahá Eli,</div>
+      <div class="poem-line">jsme rádi, že životem jít s Tebou jsme směli</div>
+      <div class="poem-line">— a i dál s Tebou půjdeme,</div>
+      <div class="poem-line strong">ve dne v noci pro Tebe tu budeme.</div>
+      <div class="poem-line spacer"></div>
+      <div class="poem-line">Maturitu tu ať dáš</div>
+      <div class="poem-line em">a na svět se jen usmíváš.</div>
+      <div class="poem-line spacer"></div>
+      <div class="poem-line">Bruno završí ta léta</div>
+      <div class="poem-line">a s Violetou další vzkvétá…</div>
+      <div class="poem-line em">vzkvétá další pohádka,</div>
+      <div class="poem-line">bude to jistě barevná zahrádka…</div>
+      <div class="poem-line">snad plná růží, občas trní</div>
+      <div class="poem-line">— i to tam patří, život to s ním umí.</div>
+      <div class="poem-line spacer"></div>
+      <div class="poem-line strong">Ať se Ti daří ve všem co chceš,</div>
+      <div class="poem-line">po cestě správné tak vždy potom jdeš.</div>
+      <div class="poem-line spacer"></div>
+      <div class="poem-line big">Ať máš i zdraví — to se tak praví…</div>
+      <div class="poem-line big">ale i říká,</div>
+      <div class="poem-line big strong">když se to nás všech týká.</div>
+    </div>
+    <div class="poem-rose">🌹</div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 — TINI ============ -->
+<section class="tini-section" id="sec-tini">
+  <div class="tini-logo reveal">TINI</div>
+  <p class="tini-sub reveal">✦ Futttura Tour ✦ Valencia 2027 ✦</p>
+  <div class="tini-grid">
+    <div class="tini-card reveal">
+      <img src="images/tini1.png" alt="TINI" style="object-position:center 20%"/>
+      <div class="tini-card-text">✨ Krásná, silná, jedinečná</div>
+    </div>
+    <div class="tini-card reveal">
+      <img src="images/tini2.png" alt="TINI" style="object-position:center 28%"/>
+      <div class="tini-card-text">🎤 Zpěv je život</div>
+    </div>
+    <div class="tini-card reveal">
+      <img src="images/tini3.png" alt="TINI" style="object-position:center 18%"/>
+      <div class="tini-card-text">💜 FUTTTURA</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 — VIDEO ============ -->
+<section class="video-section" id="sec-video">
+  <div class="video-inner">
+    <div class="tini-logo reveal" style="font-size:clamp(24px,5vw,48px);margin-bottom:4px">TINI</div>
+    <p class="tini-sub reveal" style="margin-bottom:24px">✦ Te Creo ✦ Violetta ✦</p>
+    <div class="video-frame reveal" id="yt-container">
+      <div class="video-thumb" id="yt-thumb" onclick="startVideo()">
+        <img src="images/te-creo-thumb.jpg" alt="Te Creo"/>
+        <div class="video-overlay">
+          <div class="play-circle">▶</div>
+          <span class="video-label">TINI · Te Creo</span>
+        </div>
+      </div>
+    </div>
+    <button class="play-btn reveal" id="play-btn" onclick="toggleVideo()">
+      <span id="plabel">▶ Pustit video</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ SECTION 6 — CONCERT ============ -->
+<section class="concert-section" id="sec-concert">
+  <div class="tini-logo reveal" style="font-size:clamp(24px,5vw,48px);margin-bottom:4px">FUTTTURA</div>
+  <p class="tini-sub reveal" style="margin-bottom:24px">✦ Roig Arena · Valencie · 19. 1. 2027 ✦</p>
+  <div class="concert-inner">
+    <div class="concert-grid">
+      <div class="concert-poster reveal"><img src="images/concert.png" alt="FUTTTURA"/></div>
+      <div class="ticket reveal"><img src="images/ticket1.png" alt="Lístek 1"/></div>
+      <div class="ticket reveal"><img src="images/ticket2.png" alt="Lístek 2"/></div>
+    </div>
+    <p class="concert-info reveal">🌟 Sector 108 · Řada 4 · Místa 1 & 2</p>
+    <p class="concert-info-sub reveal">Jedeme spolu do Valencie!</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 7 — FINALE ============ -->
+<section class="finale" id="sec-finale">
+  <div class="stars-layer" id="stars"></div>
+  <div class="finale-emoji reveal-scale">🌹</div>
+  <h2 class="finale-heading reveal">Milujeme tě, Eli! 💜</h2>
+  <p class="finale-text reveal">
+    Ať je Tvých dvacet let<br/>
+    jen začátkem nádherné kapitoly.<br/>
+    S láskou, vždy a navždy.
+  </p>
+  <div class="finale-hearts reveal">💜 🌸 ✨ 🌸 💜</div>
+  <p class="finale-family reveal">— Tvoje rodina</p>
+</section>
+
+<!-- NAV DOTS -->
+<nav class="nav-dots" id="nav-dots">
+  <div class="nav-dot active" data-i="0" data-label="Intro"></div>
+  <div class="nav-dot" data-i="1" data-label="Galerie"></div>
+  <div class="nav-dot" data-i="2" data-label="Přání"></div>
+  <div class="nav-dot" data-i="3" data-label="TINI"></div>
+  <div class="nav-dot" data-i="4" data-label="Video"></div>
+  <div class="nav-dot" data-i="5" data-label="Koncert"></div>
+  <div class="nav-dot" data-i="6" data-label="Finále"></div>
+</nav>
+
+<script>
+/* ==================== LOADER ==================== */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hide');
+    animateHero();
+  }, 2000);
+});
+
+/* ==================== HERO ENTRANCE ==================== */
+function animateHero() {
+  const els = [
+    { el: '.hero-eyebrow', delay: 200 },
+    { el: '.hero-number', delay: 500 },
+    { el: '.hero-let', delay: 900 },
+    { el: '.hero-name', delay: 1200 },
+    { el: '.hero-scroll', delay: 1800 },
+  ];
+  els.forEach(({ el, delay }) => {
+    setTimeout(() => {
+      const node = document.querySelector(el);
+      if (node) {
+        node.style.transition = 'opacity 1s cubic-bezier(.25,.46,.45,.94), transform 1s cubic-bezier(.25,.46,.45,.94)';
+        node.style.opacity = '1';
+        node.style.transform = el === '.hero-number' ? 'scale(1)' : 'translateY(0)';
+      }
+    }, delay);
+  });
+
+  document.querySelectorAll('.polar').forEach((p, i) => {
+    setTimeout(() => {
+      p.style.transition = 'opacity .8s ease, transform .5s cubic-bezier(.34,1.56,.64,1), box-shadow .4s';
+      p.style.opacity = '1';
+    }, 600 + i * 120);
+  });
+}
+
+/* ==================== INTERSECTION OBSERVER ==================== */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver.observe(el));
+
+const galleryObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const items = entry.target.querySelectorAll('.g-item');
+      items.forEach((item, i) => {
+        setTimeout(() => {
+          item.style.transition = 'opacity .7s cubic-bezier(.25,.46,.45,.94), transform .7s cubic-bezier(.25,.46,.45,.94)';
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
+        }, i * 100);
+      });
+      galleryObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+const galleryGrid = document.querySelector('.gallery-grid');
+if (galleryGrid) galleryObserver.observe(galleryGrid);
+
+/* ==================== POEM ANIMATION ==================== */
+let poemTriggered = false;
+const poemObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !poemTriggered) {
+      poemTriggered = true;
+      const lines = document.querySelectorAll('.poem-line');
+      lines.forEach((l, i) => setTimeout(() => l.classList.add('vis'), i * 150));
+      const rose = document.querySelector('.poem-rose');
+      if (rose) setTimeout(() => rose.classList.add('vis'), lines.length * 150 + 400);
+    }
+  });
+}, { threshold: 0.3 });
+
+const poemCard = document.querySelector('.poem-card');
+if (poemCard) poemObserver.observe(poemCard);
+
+/* ==================== TINI CARD STAGGER ==================== */
+const tiniObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const cards = entry.target.querySelectorAll('.tini-card');
+      cards.forEach((card, i) => {
+        setTimeout(() => {
+          card.style.transition = 'opacity .7s cubic-bezier(.25,.46,.45,.94), transform .7s cubic-bezier(.34,1.4,.64,1), box-shadow .4s';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, i * 150);
+      });
+      tiniObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+const tiniGrid = document.querySelector('.tini-grid');
+if (tiniGrid) tiniObserver.observe(tiniGrid);
+
+/* ==================== NAV DOTS ==================== */
+const sections = document.querySelectorAll('section');
+const dots = document.querySelectorAll('.nav-dot');
+
+const secObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = [...sections].indexOf(entry.target);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+  });
+}, { threshold: 0.5 });
+
+sections.forEach(s => secObserver.observe(s));
+
+dots.forEach(d => d.addEventListener('click', () => {
+  const idx = +d.dataset.i;
+  sections[idx]?.scrollIntoView({ behavior: 'smooth' });
+}));
+
+/* ==================== YOUTUBE PLAYER ==================== */
+let videoActive = false;
+
+function startVideo() {
+  if (videoActive) return;
+  const container = document.getElementById('yt-container');
+  const thumb = document.getElementById('yt-thumb');
+  const label = document.getElementById('plabel');
+
+  thumb.style.display = 'none';
+
+  const iframe = document.createElement('iframe');
+  iframe.id = 'yt-frame';
+  iframe.src = 'https://www.youtube.com/embed/QxE6neG3r10?autoplay=1&rel=0&modestbranding=1';
+  iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  iframe.allowFullscreen = true;
+  iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
+  container.appendChild(iframe);
+
+  videoActive = true;
+  if (label) label.textContent = '⏸ Zastavit video';
+}
+
+function stopVideo() {
+  const thumb = document.getElementById('yt-thumb');
+  const label = document.getElementById('plabel');
+  const frame = document.getElementById('yt-frame');
+
+  if (frame) frame.remove();
+  if (thumb) thumb.style.display = 'flex';
+  videoActive = false;
+  if (label) label.textContent = '▶ Pustit video';
+}
+
+function toggleVideo() {
+  videoActive ? stopVideo() : startVideo();
+}
+
+/* ==================== FIREWORKS ==================== */
+const cv = document.getElementById('fw-canvas');
+const ctx = cv.getContext('2d');
+const FWC = ['#f5c842','#e91e8c','#c084fc','#fff','#7b2d8b','#ff6b9d','#ffe066','#ce93d8'];
+
+function resizeCv() { cv.width = innerWidth; cv.height = innerHeight; }
+resizeCv();
+addEventListener('resize', resizeCv);
+
+class Particle {
+  constructor(x, y, c) {
+    this.x = x; this.y = y; this.c = c;
+    const a = Math.random() * Math.PI * 2;
+    const s = Math.random() * 5.5 + 1.5;
+    this.vx = Math.cos(a) * s;
+    this.vy = Math.sin(a) * s;
+    this.alpha = 1;
+    this.decay = Math.random() * .018 + .008;
+    this.size = Math.random() * 2.5 + .8;
+    this.gravity = .06;
+    this.trail = [];
+  }
+  update() {
+    this.trail.push({ x: this.x, y: this.y });
+    if (this.trail.length > 6) this.trail.shift();
+    this.vx *= .985;
+    this.vy += this.gravity;
+    this.x += this.vx;
+    this.y += this.vy;
+    this.alpha -= this.decay;
+  }
+  draw() {
+    ctx.save();
+    this.trail.forEach((p, i) => {
+      ctx.globalAlpha = (i / this.trail.length) * this.alpha * .35;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, this.size * .4, 0, Math.PI * 2);
+      ctx.fillStyle = this.c;
+      ctx.fill();
+    });
+    ctx.globalAlpha = this.alpha;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.c;
+    ctx.shadowBlur = 6;
+    ctx.shadowColor = this.c;
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+class Firework {
+  constructor() {
+    this.x = Math.random() * cv.width * .8 + cv.width * .1;
+    this.y = cv.height;
+    this.targetY = Math.random() * cv.height * .45 + cv.height * .05;
+    this.vy = -Math.random() * 7 - 9;
+    this.c = FWC[Math.floor(Math.random() * FWC.length)];
+    this.exploded = false;
+    this.particles = [];
+    this.trail = [];
+  }
+  update() {
+    if (!this.exploded) {
+      this.trail.push({ x: this.x, y: this.y });
+      if (this.trail.length > 10) this.trail.shift();
+      this.y += this.vy;
+      this.vy += .28;
+      if (this.y <= this.targetY) this.explode();
+    } else {
+      this.particles.forEach(p => p.update());
+      this.particles = this.particles.filter(p => p.alpha > 0);
+    }
+  }
+  explode() {
+    this.exploded = true;
+    for (let i = 0; i < 100; i++) {
+      const c = Math.random() < .25 ? FWC[Math.floor(Math.random() * FWC.length)] : this.c;
+      this.particles.push(new Particle(this.x, this.y, c));
+    }
+  }
+  draw() {
+    if (!this.exploded) {
+      ctx.save();
+      this.trail.forEach((p, i) => {
+        ctx.globalAlpha = (i / this.trail.length) * .6;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = this.c;
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = '#fff';
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = this.c;
+      ctx.fill();
+      ctx.restore();
+    } else {
+      this.particles.forEach(p => p.draw());
+    }
+  }
+  get done() { return this.exploded && this.particles.length === 0; }
+}
+
+let fireworks = [];
+let fwActive = true;
+let lastFW = 0;
+
+function fwLoop(ts) {
+  if (!fwActive) return;
+  requestAnimationFrame(fwLoop);
+  ctx.fillStyle = 'rgba(26,0,51,.18)';
+  ctx.fillRect(0, 0, cv.width, cv.height);
+  if (ts - lastFW > 700) {
+    fireworks.push(new Firework());
+    if (Math.random() < .35) fireworks.push(new Firework());
+    lastFW = ts;
+  }
+  fireworks = fireworks.filter(f => !f.done);
+  fireworks.forEach(f => { f.update(); f.draw(); });
+}
+
+const heroEl = document.getElementById('sec-hero');
+const fwObs = new IntersectionObserver(en => {
+  fwActive = en[0].isIntersecting;
+  if (fwActive) requestAnimationFrame(fwLoop);
+}, { threshold: .1 });
+fwObs.observe(heroEl);
+requestAnimationFrame(fwLoop);
+
+/* ==================== STARS ==================== */
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 100; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const sz = Math.random() < .15 ? 3 : Math.random() < .4 ? 2 : 1;
+  s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;--d:${Math.random()*4+2}s;--dl:${Math.random()*5}s`;
+  starsEl.appendChild(s);
+}
+
+/* ==================== FLOATING PARTICLES ==================== */
+const particleColors = ['#f5c842','#e91e8c','#ce93d8','#7b2d8b','rgba(255,255,255,.3)'];
+const particlesEl = document.getElementById('particles');
+particleColors.forEach(c => {
+  for (let i = 0; i < 3; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const sz = Math.random() * 5 + 2;
+    p.style.cssText = `left:${Math.random()*100}%;width:${sz}px;height:${sz}px;background:${c};animation-duration:${Math.random()*18+12}s;animation-delay:${Math.random()*12}s`;
+    particlesEl.appendChild(p);
+  }
+});
+</script>
+</body>
+</html>
