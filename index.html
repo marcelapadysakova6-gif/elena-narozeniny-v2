@@ -306,10 +306,10 @@
     /* ---- POEM: mobile-first, fits one screen ---- */
     .poem-section{
       background:
-        radial-gradient(ellipse at 25% 20%,rgba(190,80,255,.55) 0%,transparent 42%),
-        radial-gradient(ellipse at 75% 75%,rgba(233,30,140,.40) 0%,transparent 42%),
-        radial-gradient(ellipse at 60% 10%,rgba(255,100,200,.30) 0%,transparent 38%),
-        linear-gradient(150deg,#e8d0ff 0%,#f0d5ff 25%,#f8dff5 55%,#edd5ff 80%,#e2c8ff 100%);
+        radial-gradient(ellipse at 50% 50%,rgba(233,30,140,.35) 0%,transparent 50%),
+        radial-gradient(ellipse at 20% 20%,rgba(192,96,240,.2) 0%,transparent 40%),
+        radial-gradient(ellipse at 80% 80%,rgba(245,200,66,.1) 0%,transparent 40%),
+        linear-gradient(180deg,#0d001a 0%,var(--mid) 50%,#2a004d 100%);
       display:flex;align-items:center;justify-content:center;
       padding:6px 14px;
     }
@@ -329,14 +329,14 @@
       font-family:var(--font-serif);
       font-size:clamp(17px,5vw,22px);
       font-weight:300;font-style:italic;
-      color:#7b1fa2;letter-spacing:.05em;
+      color:var(--lpurp);letter-spacing:.05em;
       margin-bottom:3px;
       opacity:0;transform:translateY(20px);
     }
 
     .poem-divider{
       width:50px;height:1px;
-      background:linear-gradient(90deg,transparent,#a040c8,transparent);
+      background:linear-gradient(90deg,transparent,var(--lpurp),transparent);
       margin:0 auto 10px;opacity:0;
     }
 
@@ -344,19 +344,19 @@
       font-family:var(--font-serif);
       font-size:clamp(11px,3vw,13px);
       font-weight:600;
-      line-height:1.42;color:#3b0a5c;
+      line-height:1.42;color:var(--lavender);
       padding:1px 0;opacity:0;
       transform:translateY(10px);
       transition:all .8s cubic-bezier(.25,.46,.45,.94);
     }
     .poem-line.vis{opacity:1;transform:translateY(0)}
-    .poem-line.em{font-style:italic;font-weight:700;color:#a0006e;font-size:clamp(11.5px,3.1vw,13.5px)}
+    .poem-line.em{font-style:italic;font-weight:700;color:#ff6b9d;font-size:clamp(11.5px,3.1vw,13.5px)}
     .poem-line.strong{
       font-weight:800;font-size:clamp(11.5px,3.1vw,13.5px);
-      background:linear-gradient(90deg,#c0006a,#6a0099);
+      background:linear-gradient(90deg,var(--pink),var(--lpurp));
       -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
     }
-    .poem-line.big{font-weight:800;color:#1a0030;font-size:clamp(12px,3.2vw,14px)}
+    .poem-line.big{font-weight:800;color:#fff;font-size:clamp(12px,3.2vw,14px)}
     .poem-line.spacer{height:5px}
 
     .poem-rose{
@@ -383,9 +383,10 @@
     /* ==================== TINI ==================== */
     .tini-section{
       background:
-        radial-gradient(ellipse at 30% 20%,rgba(233,30,140,.35) 0%,transparent 50%),
-        radial-gradient(ellipse at 70% 80%,rgba(123,45,139,.35) 0%,transparent 50%),
-        linear-gradient(160deg,#0d001a 0%,var(--mid) 50%,#0d001a 100%);
+        radial-gradient(ellipse at 50% 50%,rgba(233,30,140,.35) 0%,transparent 50%),
+        radial-gradient(ellipse at 20% 20%,rgba(192,96,240,.2) 0%,transparent 40%),
+        radial-gradient(ellipse at 80% 80%,rgba(245,200,66,.1) 0%,transparent 40%),
+        linear-gradient(180deg,#0d001a 0%,var(--mid) 50%,#2a004d 100%);
       display:flex;flex-direction:column;
       align-items:center;justify-content:center;
       padding:30px 16px;
@@ -483,8 +484,10 @@
     /* ==================== VIDEO ==================== */
     .video-section{
       background:
-        radial-gradient(ellipse at 50% 30%,rgba(233,30,140,.2) 0%,transparent 50%),
-        linear-gradient(180deg,#0d001a 0%,var(--mid) 50%,#0d001a 100%);
+        radial-gradient(ellipse at 50% 50%,rgba(233,30,140,.35) 0%,transparent 50%),
+        radial-gradient(ellipse at 20% 20%,rgba(192,96,240,.2) 0%,transparent 40%),
+        radial-gradient(ellipse at 80% 80%,rgba(245,200,66,.1) 0%,transparent 40%),
+        linear-gradient(180deg,#0d001a 0%,var(--mid) 50%,#2a004d 100%);
       display:flex;align-items:center;justify-content:center;
       padding:40px 16px;
     }
@@ -551,9 +554,10 @@
     /* ==================== CONCERT / ENVELOPE ==================== */
     .concert-section{
       background:
-        radial-gradient(ellipse at 40% 30%,rgba(233,30,140,.25) 0%,transparent 50%),
-        radial-gradient(ellipse at 70% 80%,rgba(123,45,139,.2) 0%,transparent 50%),
-        linear-gradient(180deg,#0d001a 0%,var(--mid) 50%,#0d001a 100%);
+        radial-gradient(ellipse at 50% 50%,rgba(233,30,140,.35) 0%,transparent 50%),
+        radial-gradient(ellipse at 20% 20%,rgba(192,96,240,.2) 0%,transparent 40%),
+        radial-gradient(ellipse at 80% 80%,rgba(245,200,66,.1) 0%,transparent 40%),
+        linear-gradient(180deg,#0d001a 0%,var(--mid) 50%,#2a004d 100%);
       display:flex;flex-direction:column;
       align-items:center;justify-content:center;
       padding:40px 16px;
