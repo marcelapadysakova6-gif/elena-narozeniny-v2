@@ -2,8 +2,12 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <meta name="color-scheme" content="only light"/>
+  <meta name="theme-color" content="#fce8f8"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <meta name="format-detection" content="telephone=no"/>
   <title>Elenka 20 ✨ Všechno nejlepší!</title>
   <meta name="description" content="Přání k 20. narozeninám pro Elenku"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -13,6 +17,10 @@
     *{margin:0;padding:0;box-sizing:border-box}
 
     :root{
+      --safe-top:env(safe-area-inset-top,0px);
+      --safe-right:env(safe-area-inset-right,0px);
+      --safe-bottom:env(safe-area-inset-bottom,0px);
+      --safe-left:env(safe-area-inset-left,0px);
       color-scheme:only light;
       --page-gradient:linear-gradient(160deg,#f5e0ff 0%,#fce8f8 25%,#fff8fe 55%,#fde8f6 78%,#f8e0ff 100%);
       --pink:#e0197a;
@@ -32,7 +40,13 @@
       scroll-snap-type:y mandatory;
       overflow-y:scroll;
       overflow-x:hidden;
+      -webkit-overflow-scrolling:touch;
+      overscroll-behavior-y:contain;
+      scroll-padding-top:var(--safe-top);
+      scroll-padding-bottom:var(--safe-bottom);
       background:var(--page-gradient);
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
     }
 
     body{
@@ -41,6 +55,10 @@
       background:var(--page-gradient);
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
+      touch-action:manipulation;
+      min-height:100vh;
+      min-height:100svh;
+      min-height:-webkit-fill-available;
     }
 
     ::selection{background:rgba(224,25,122,.45);color:#fff}
@@ -58,6 +76,7 @@
     /* ==================== LOADER / START SCREEN ==================== */
     #loader{
       position:fixed;inset:0;z-index:9999;
+      padding:var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left);
       background:var(--page-gradient);
       display:flex;align-items:center;justify-content:center;
       flex-direction:column;gap:24px;
@@ -97,8 +116,12 @@
 
     /* ==================== MUSIC BUTTON ==================== */
     #music-btn{
-      position:fixed;top:16px;right:16px;z-index:600;
+      position:fixed;
+      top:max(12px,calc(12px + var(--safe-top)));
+      right:max(12px,calc(12px + var(--safe-right)));
+      z-index:600;
       width:44px;height:44px;border-radius:50%;
+      -webkit-tap-highlight-color:transparent;
       background:rgba(255,255,255,.55);
       border:1px solid rgba(224,25,122,.3);
       backdrop-filter:blur(20px);
@@ -138,7 +161,9 @@
 
     /* ==================== SECTIONS ==================== */
     section{
-      min-height:100vh;min-height:100dvh;
+      min-height:100vh;
+      min-height:100svh;
+      min-height:100dvh;
       scroll-snap-align:start;
       position:relative;
       overflow:hidden;
@@ -155,7 +180,7 @@
     .hero-content{
       position:relative;z-index:10;
       text-align:center;
-      padding:40px 20px;
+      padding:max(40px,calc(24px + var(--safe-top))) 20px 40px;
     }
 
     .hero-eyebrow{
@@ -207,7 +232,7 @@
     @keyframes nameShine{0%{background-position:0%}100%{background-position:300%}}
 
     .hero-scroll{
-      position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+      position:absolute;bottom:max(28px,calc(20px + var(--safe-bottom)));left:50%;transform:translateX(-50%);
       z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px;
       opacity:0;
     }
@@ -551,6 +576,7 @@
       padding:12px 32px;border-radius:50px;
       font-family:var(--font-sans);font-size:14px;font-weight:600;
       cursor:pointer;letter-spacing:.08em;transition:all .3s;
+      -webkit-tap-highlight-color:transparent;
       opacity:0;transform:translateY(20px);
       box-shadow:0 4px 20px rgba(var(--pink-rgb),.3);
     }
@@ -767,14 +793,18 @@
 
     /* ==================== NAV DOTS ==================== */
     .nav-dots{
-      position:fixed;right:20px;top:50%;transform:translateY(-50%);
+      position:fixed;
+      right:max(12px,calc(12px + var(--safe-right)));
+      top:50%;transform:translateY(-50%);
       display:flex;flex-direction:column;gap:12px;z-index:500;
+      padding-bottom:var(--safe-bottom);
     }
     .nav-dot{
       width:4px;height:4px;border-radius:2px;
       background:rgba(120,0,170,.25);
       border:none;
       cursor:pointer;transition:all .4s cubic-bezier(.25,.46,.45,.94);position:relative;
+      -webkit-tap-highlight-color:transparent;
     }
     .nav-dot::after{
       content:attr(data-label);
@@ -791,10 +821,23 @@
       transform:none;
     }
 
+    /* větší cíl pro prst na iPhonu / iPadu */
+    @media (hover:none) and (pointer:coarse){
+      .nav-dot{
+        width:12px;height:12px;border-radius:6px;
+        box-sizing:border-box;
+      }
+      .nav-dot.active{width:12px;height:28px}
+    }
+
     @media(max-width:600px){
-      .nav-dots{right:10px;gap:10px}
+      .nav-dots{right:max(8px,calc(8px + var(--safe-right)));gap:10px}
       .nav-dot::after{display:none}
       .polar{display:none !important}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto;scroll-snap-type:none}
     }
 
     /* ==================== REVEAL ANIMATIONS ==================== */
@@ -1346,13 +1389,21 @@ let roseParticles = [];
 let roseRockets = [];
 let roseActive = false;
 
+let roseCssW = 0, roseCssH = 0;
 function resizeRoseCv() {
   const sec = document.getElementById('sec-poem');
-  roseCv.width = sec.offsetWidth;
-  roseCv.height = sec.offsetHeight;
+  const dpr = Math.min(window.devicePixelRatio || 1, 3);
+  roseCssW = sec.offsetWidth;
+  roseCssH = sec.offsetHeight;
+  roseCv.style.width = roseCssW + 'px';
+  roseCv.style.height = roseCssH + 'px';
+  roseCv.width = Math.max(1, Math.round(roseCssW * dpr));
+  roseCv.height = Math.max(1, Math.round(roseCssH * dpr));
+  roseCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 resizeRoseCv();
 addEventListener('resize', resizeRoseCv);
+if (window.visualViewport) window.visualViewport.addEventListener('resize', resizeRoseCv);
 
 const ROSE_COLORS = [
   '#dc143c','#ff1450','#c83250','#ff6987','#b41e3c',
@@ -1444,9 +1495,9 @@ class RosePetal {
 // Rocket that flies up and explodes
 class RoseRocket {
   constructor() {
-    this.x = Math.random() * roseCv.width * .8 + roseCv.width * .1;
-    this.y = roseCv.height + 10;
-    this.targetY = Math.random() * roseCv.height * .6 + roseCv.height * .05;
+    this.x = Math.random() * roseCssW * .8 + roseCssW * .1;
+    this.y = roseCssH + 10;
+    this.targetY = Math.random() * roseCssH * .6 + roseCssH * .05;
     this.vy = -(Math.random() * 10 + 14);
     this.exploded = false;
     this.trail = [];
@@ -1502,7 +1553,7 @@ let lastRoseRocket = 0;
 function roseLoop(ts) {
   if (!roseActive) return;
   requestAnimationFrame(roseLoop);
-  roseCtx.clearRect(0, 0, roseCv.width, roseCv.height);
+  roseCtx.clearRect(0, 0, roseCssW, roseCssH);
 
   // launch rockets
   if (!ts || ts - lastRoseRocket > 800) {
@@ -1529,7 +1580,7 @@ const poemSecObs = new IntersectionObserver(en => {
     roseActive = false;
     roseParticles = [];
     roseRockets = [];
-    roseCtx.clearRect(0, 0, roseCv.width, roseCv.height);
+    roseCtx.clearRect(0, 0, roseCssW, roseCssH);
   } else if (en[0].isIntersecting && poemTriggered && !roseActive) {
     roseActive = true;
     lastRoseRocket = 0;
@@ -1543,13 +1594,22 @@ const cv = document.getElementById('fw-canvas');
 const ctx = cv.getContext('2d');
 const FWC = ['#f5c842','#e0197a','#c084fc','#fff','#9b30d8','#ff6b9d','#ffe066','#ce93d8'];
 
+let fwCssW = 0, fwCssH = 0;
 function resizeCv() {
-  cv.width = innerWidth; cv.height = innerHeight;
+  const dpr = Math.min(window.devicePixelRatio || 1, 3);
+  fwCssW = window.innerWidth;
+  fwCssH = window.innerHeight;
+  cv.style.width = fwCssW + 'px';
+  cv.style.height = fwCssH + 'px';
+  cv.width = Math.max(1, Math.round(fwCssW * dpr));
+  cv.height = Math.max(1, Math.round(fwCssH * dpr));
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   ctx.fillStyle = '#fff8fe';
-  ctx.fillRect(0, 0, cv.width, cv.height);
+  ctx.fillRect(0, 0, fwCssW, fwCssH);
 }
 resizeCv();
 addEventListener('resize', resizeCv);
+if (window.visualViewport) window.visualViewport.addEventListener('resize', resizeCv);
 
 class FWParticle {
   constructor(x, y, c) {
@@ -1592,9 +1652,9 @@ class FWParticle {
 
 class Firework {
   constructor() {
-    this.x = Math.random() * cv.width * .8 + cv.width * .1;
-    this.y = cv.height;
-    this.targetY = Math.random() * cv.height * .45 + cv.height * .05;
+    this.x = Math.random() * fwCssW * .8 + fwCssW * .1;
+    this.y = fwCssH;
+    this.targetY = Math.random() * fwCssH * .45 + fwCssH * .05;
     this.vy = -Math.random() * 7 - 9;
     this.c = FWC[Math.floor(Math.random() * FWC.length)];
     this.exploded = false;
@@ -1646,7 +1706,7 @@ function fwLoop(ts) {
   if (!fwActive) return;
   requestAnimationFrame(fwLoop);
   ctx.fillStyle = 'rgba(255,248,254,0.4)';
-  ctx.fillRect(0, 0, cv.width, cv.height);
+  ctx.fillRect(0, 0, fwCssW, fwCssH);
   if (ts - lastFW > 700) {
     fireworks.push(new Firework());
     if (Math.random() < .35) fireworks.push(new Firework());
