@@ -5,6 +5,7 @@
 | **Světlá (růžová)** | `elena-narozeniny-v2/` | pastelový gradient |
 | **Tmavá** | `elena-narozeniny-v2-dark/` | fialovo‑purpurový, jako dřív |
 
-Produkční světlá: [elena-narozeniny-v2.vercel.app](https://elena-narozeniny-v2.vercel.app)
+- **Světlá (produkce):** [elena-narozeniny-v2.vercel.app](https://elena-narozeniny-v2.vercel.app)  
+- **Tmavá (produkce):** [elena-narozeniny-v2-dark.vercel.app](https://elena-narozeniny-v2-dark.vercel.app)
 
-Tmavou nasaď zvlášť z `elena-narozeniny-v2-dark/` (`npx vercel --prod`) — viz README v té složce.
+Další deploy tmavé: ve složce `elena-narozeniny-v2-dark` spusť `npx vercel deploy --prod --yes`.
